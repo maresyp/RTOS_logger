@@ -8,11 +8,7 @@
 #include <errno.h>
 #include <stdarg.h>
 
-/* DEFINES */
-
-#define LOGGER_LEVEL_MIN 1
-#define LOGGER_LEVEL_MIN 2
-#define LOGGER_LEVEL_MIN 4
+/* PRIVATE DEFINES */
 
 /* STATIC VARIABLES */
 static sem_t siginfo_sem;
