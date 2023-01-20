@@ -6,8 +6,11 @@
 int main(int argc, char** argv) {
     logger_init();
 
-    logger_log();
+    logger_log(1, "something");
+    logger_log(1, "something2");
+    logger_log(1, "something3");
 
     logger_destroy();
+
     return 0;
 }
