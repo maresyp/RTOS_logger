@@ -7,10 +7,14 @@
 #define LOGGER_LEVEL_WARNING 2
 #define LOGGER_LEVEL_ERROR 4
 
+typedef const char *const(*dump_function) (void);
+
 typedef struct logger_init_type {
     int logging_level_signal;
     int logging_activation_signal;
     int logging_dump_signal;
+    dump_function logging_dump_function;
+
 }logger_init_type;
 
 /* PUBLIC FUNCTIONS DECLARATIONS */

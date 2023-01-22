@@ -45,13 +45,13 @@ static void* dump_thread(void* arg) {
         while (sem_wait(&dump_semaphore) && (errno == EINTR));
         dump_counter++;
 
-        static FILE * dump_file;
+        FILE * dump_file;
         dump_file = fopen("dump_file", "w");
         if (dump_file == NULL) {
             return NULL;
         }
 
-
+        fprintf(dump_file, ((logger_init_type*)arg)->logging_dump_function());
     }
 }
 
@@ -82,7 +82,7 @@ extern void logger_init(const logger_init_type *const logger_init) {
 
         sem_init(&dump_semaphore, 0, 0);
 
-        pthread_create(&tid, NULL, dump_thread, NULL);
+        pthread_create(&tid, NULL, dump_thread, (void*)logger_init);
 
         logger_file = fopen("filename.log", "w");
         if (logger_file == NULL) {
