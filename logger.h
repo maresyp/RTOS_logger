@@ -7,10 +7,16 @@
 #define LOGGER_LEVEL_WARNING 2
 #define LOGGER_LEVEL_ERROR 4
 
+typedef struct logger_init_type {
+    int logging_level_signal;
+    int logging_activation_signal;
+    int logging_dump_signal;
+}logger_init_type;
+
 /* PUBLIC FUNCTIONS DECLARATIONS */
 
 extern int logger_log(const int level, const char * string, ...);
-extern void logger_init();
+extern void logger_init(const logger_init_type *const logger_init);
 extern void logger_destroy();
 
 #endif //LOGGER_LOGGER_H
